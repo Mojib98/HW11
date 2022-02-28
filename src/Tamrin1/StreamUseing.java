@@ -13,10 +13,10 @@ public class StreamUseing {
         List<String> list = new ArrayList<>(Arrays.asList("Amir", "Hatef", "Mehran"
                 , "Mojtaba", "Mohammad", "Ali"
                 , "Davood", "Reza", "Mohsen"));
-        Map<Integer, Set<String>> map = new HashMap<>();
-        map = list.stream().collect(
-                Collectors.groupingBy(a -> len(a), Collectors.toSet())
-        );
+        Map<Integer, List<String>> map = new HashMap<>();
+        list.stream().collect(
+                Collectors.groupingBy(a -> len(a), Collectors.toList())
+        ).forEach((a,b)-> System.out.println(a+": "+b+": "+b.size()));
         //System.out.println(map);
 
        /* System.out.println(list.stream()
@@ -26,7 +26,7 @@ public class StreamUseing {
                                 (m,e)-> m.putAll(e),
                                 (map1,map2)->{ map1.putAll(map2); return map1;}
                         ))).values());
-*/
+
         System.out.println(list.stream().collect(
                 Collectors.groupingBy((a) -> len(a), Collectors.collectingAndThen(Collectors.toSet(), (d) -> {
                    int e = 0;
@@ -37,7 +37,7 @@ public class StreamUseing {
                     }
                 return e;
                 }
-                ))));
+                ))));*/
     }
         public static int len (String x){
             return (x.length());
